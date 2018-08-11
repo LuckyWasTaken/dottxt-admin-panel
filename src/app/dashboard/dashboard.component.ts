@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.reducers';
+import { Logout } from '../auth/store/auth.actions';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.store.dispatch(new Logout());
   }
 
 }
