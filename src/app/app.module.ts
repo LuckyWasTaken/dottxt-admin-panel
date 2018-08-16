@@ -12,6 +12,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.reducers';
 import { environment } from '../environments/environment.prod';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { DashboardEffects } from './dashboard/store/dashboard.effects';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
    declarations: [
@@ -20,11 +22,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       DashboardComponent
    ],
    imports: [
+      HttpClientModule,
       BrowserModule,
       AppRoutingModule,
       FormsModule,
       StoreModule.forRoot(reducers),
-      EffectsModule.forRoot([AuthEffects]),
+      EffectsModule.forRoot([AuthEffects, DashboardEffects]),
       !environment.production ? StoreDevtoolsModule.instrument() : []
    ],
    providers: [],
