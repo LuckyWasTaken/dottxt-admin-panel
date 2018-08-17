@@ -7,5 +7,7 @@ export class Order {
         public status:  'Processing' | 'Sent' | 'Recieved' | 'Resolving problems',
         public vklink: String,
         public email: String,
+        public name: String,
+        public shipvia: String,
         public phone: String) {}
 }
