@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Order #{{id}}</h1>
+    <h3>Items</h3>
+    <ul class="list-group">
+      <li *ngFor="let item of order.items" class="list-group-item">
+        {{ item.name }} Size: {{ item.size }}
+        <span class="float-right">
+            x {{ item.quantity }}
+        </span>
+      </li>
+      <h3>Deliver to: </h3>
+      <p> {{ order.name }}, {{ order.address }} via {{ order.shipvia }} </p>
+      <h3>Contact client: </h3>
+      <p><a href="//{{order.vklink}}" target="_blank">VK</a></p>
+      <p>Phone: {{ order.phone }}</p>
+    </ul>
+    <h3>Change status</h3>
+    <form class="form-group" #f="ngForm" (ngSubmit)="onSave(f)">
+      <select name="status" 
+        class="form-control" 
+        id="status"
+        ngModel="status"
+        >
+        <option value="Processing">Processing</option>
+        <option value="Sent">Sent</option>
+        <option value="Received">Received</option>
+        <option value="Resolving problems">Resolving problems</option>
+      </select>
+      <br>
+      <input *ngIf="f.value.status === 'Sent'" 
+      type="text"
+      name="track" 
+      id="track"
+      class="form-control"
+      [placeholder]="order.track||'Track-number'">
+      <br>
+      <button type="submit" class="btn btn-outline-primary">Save & return</button>
+    </form>
+</div>

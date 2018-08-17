@@ -1,0 +1,37 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/app.reducers';
+import { ActivatedRoute } from '@angular/router';
+import { State } from '../store/dashboard.reducers';
+import { Subscription } from 'rxjs';
+import { Order } from '../../shared/order.model';
+import { NgForm } from '@angular/forms';
+
+@Component({
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css']
+})
+export class OrderComponent implements OnInit, OnDestroy {
+
+  constructor(private store: Store<AppState>, private route: ActivatedRoute) { }
+
+  storeSubscription: Subscription;
+  order: Order;
+  id: number;
+
+  ngOnInit() {
+    this.id = +this.route.snapshot.params.id;
+    this.storeSubscription = this.store.select('dashboard').subscribe((state: State) => {
+      this.order = state.orders[this.id];
+    });
+  }
+
+  ngOnDestroy() {
+    this.storeSubscription.unsubscribe();
+  }
+
+  onSave(form: NgForm) {
+    console.log(form);
+  }
+}

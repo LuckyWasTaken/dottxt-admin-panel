@@ -14,12 +14,14 @@ import { environment } from '../environments/environment.prod';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { DashboardEffects } from './dashboard/store/dashboard.effects';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { OrderComponent } from './dashboard/order/order.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       AuthComponent,
-      DashboardComponent
+      DashboardComponent,
+      OrderComponent
    ],
    imports: [
       HttpClientModule,
