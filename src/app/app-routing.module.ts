@@ -9,7 +9,7 @@ const appRoutes: Routes = [
     {path: '', component: AuthComponent},
     {path: 'dashboard', component: DashboardComponent, children: [
         {path: 'orders', component: OrdersComponent},
-        {path: 'order/:id', component: OrderComponent}
+        {path: 'orders/:id', component: OrderComponent}
     ]}
 ];
 

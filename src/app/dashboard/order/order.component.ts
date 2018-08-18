@@ -41,6 +41,6 @@ export class OrderComponent implements OnInit, OnDestroy {
     };
     this.store.dispatch(new TryUpdateOrder({order: updated, id: this.id}));
 
-    this.router.navigate(['../', 'dashboard']);
+    this.router.navigate(['/', 'dashboard', 'orders']);
   }
 }
