@@ -1,0 +1,18 @@
+<div class="container">
+  <ul class="list-group">
+    <li 
+      class="list-group-item d-flex justify-content-between align-items-center" 
+      *ngFor="let order of (ordersState | async).orders; let id = index"
+      [routerLink]="[id]"
+      [ngClass]="{'list-group-item-success': order.status === 'Sent'}" >
+      <span class="font-weight-light">
+        <span *ngFor="let item of order.items"> 
+          {{item.name}} [{{ item.size }}] x {{item.quantity}} <br>
+        </span>
+      </span>
+      <span class="badge badge-info badge-pill">
+        {{ order.status }}
+      </span>
+    </li>
+  </ul>
+</div>
