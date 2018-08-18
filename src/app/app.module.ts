@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrdersComponent } from './dashboard/orders/orders.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
@@ -20,7 +20,7 @@ import { OrderComponent } from './dashboard/order/order.component';
    declarations: [
       AppComponent,
       AuthComponent,
-      DashboardComponent,
+      OrdersComponent,
       OrderComponent
    ],
    imports: [
