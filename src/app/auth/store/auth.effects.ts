@@ -59,7 +59,7 @@ export class AuthEffects {
             return authData.authenticated;
         }),
         map((authData: {token: string, authenticated: boolean}) => {
-            this.router.navigate(['dashboard', 'orders']);
+            this.router.navigate(['dashboard']);
             return {
                 type: AuthActions.SIGNIN,
                 payload: authData.token

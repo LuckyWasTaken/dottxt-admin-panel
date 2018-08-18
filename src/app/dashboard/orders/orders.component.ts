@@ -19,8 +19,5 @@ export class OrdersComponent implements OnInit {
     this.store.dispatch(new TryGetOrders());
   }
 
-  logout() {
-    this.store.dispatch(new Logout());
-  }
 
 }
