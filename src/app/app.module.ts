@@ -16,6 +16,7 @@ import { DashboardEffects } from './dashboard/store/dashboard.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderComponent } from './dashboard/order/order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ItemsComponent } from './dashboard/items/items.component';
 
 @NgModule({
    declarations: [
@@ -23,7 +24,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
       AuthComponent,
       OrdersComponent,
       OrderComponent,
-      DashboardComponent
+      DashboardComponent,
+      ItemsComponent
    ],
    imports: [
       HttpClientModule,
