@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { State } from '../store/dashboard.reducers';
 import { Subscription } from 'rxjs';
 import { Order } from '../../shared/order.model';
 import { NgForm } from '@angular/forms';
+import { TryUpdateOrder } from '../store/dashboard.actions';
 
 @Component({
   selector: 'app-order',
@@ -14,7 +15,9 @@ import { NgForm } from '@angular/forms';
 })
 export class OrderComponent implements OnInit, OnDestroy {
 
-  constructor(private store: Store<AppState>, private route: ActivatedRoute) { }
+  constructor(private store: Store<AppState>,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   storeSubscription: Subscription;
   order: Order;
@@ -32,6 +35,12 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   onSave(form: NgForm) {
-    console.log(form);
+    const updated = {
+      ...this.order,
+      ...form.value
+    };
+    this.store.dispatch(new TryUpdateOrder({order: updated, id: this.id}));
+
+    this.router.navigate(['../', 'dashboard']);
   }
 }

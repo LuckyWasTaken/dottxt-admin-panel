@@ -25,4 +25,21 @@ export class DashboardEffects {
                 };
             })
         );
+
+    @Effect()
+    updateOrder = this.$actions.ofType(DashboardActions.TRY_UPDATE_ORDER)
+        .pipe(
+            map((action: DashboardActions.TryUpdateOrder) => {
+                return action.payload;
+            }),
+            switchMap((payload: {order: Order, id: number}) => {
+                return this.http.put(`${config.databaseURL}/orders/${payload.id}.json`,
+                 payload.order);
+            }),
+            map(() => {
+                return {
+                    type: DashboardActions.TRY_GET_ORDERS
+                };
+            })
+        );
 }
