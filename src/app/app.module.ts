@@ -13,15 +13,17 @@ import { reducers } from './store/app.reducers';
 import { environment } from '../environments/environment.prod';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { DashboardEffects } from './dashboard/store/dashboard.effects';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { OrderComponent } from './dashboard/order/order.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       AuthComponent,
       OrdersComponent,
-      OrderComponent
+      OrderComponent,
+      DashboardComponent
    ],
    imports: [
       HttpClientModule,
