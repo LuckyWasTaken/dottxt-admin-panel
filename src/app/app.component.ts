@@ -20,6 +20,5 @@ export class AppComponent implements OnInit {
       authDomain: config.authDomain
     });
 
-    this.store.dispatch(new RestoreAuth());
   }
 }
