@@ -5,3 +5,4 @@ export class StockItem {
         public availability: [{size: string,
             quantity: number}]) {}
 }
+
